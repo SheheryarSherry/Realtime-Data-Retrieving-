@@ -7,8 +7,16 @@ import {AngularFire, FirebaseListObservable} from 'angularfire2';
 })
 export class AppComponent {
   title = 'app works!';
-  items:FirebaseListObservable<any[]>;
+  StatusList:FirebaseListObservable<any[]>;
+  newStatus:string='';
   constructor(af:AngularFire){
-this.items=af.database.list('/items');
+
+this.StatusList=af.database.list('/items');
   }
+  add(){
+    this.StatusList.push(this.newStatus);
+    this.newStatus='';
+ 
+ }
+  
 }
